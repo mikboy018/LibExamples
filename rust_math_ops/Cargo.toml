@@ -1,0 +1,11 @@
+[package]
+name = "rust_math_ops"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+cxx = "0.3.0"
+
+[lib]
+name = "rust_math_ops"
+crate-type = ["staticlib"]
