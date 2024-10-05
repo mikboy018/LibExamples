@@ -1,40 +1,24 @@
-module double_operations
-  use iso_c_binding
-
+module fortranmath_ops
   implicit none
-
-  interface
-    function fortran_add(a, b) bind(c, name="fortran_add")
-      use iso_c_binding
-      real(c_double), value :: a
-      real(c_double), value :: b
-      real(c_double) :: add_fortran
-    end function fortran_add
-  end interface
-
-  interface
-    function fortran_div(a, b) bind(c, name="fortran_div")
-      use iso_c_binding
-      real(c_double), value :: a
-      real(c_double), value :: b
-      real(c_double) :: div_fortran
-    end function fortran_div
-  end interface
-
   contains
 
-  subroutine add_fortran(a, b, result)
-    real :: a, b, result
-    result = a + b
-  end subroutine add_fortran
+  subroutine fortran_add(a,b,c) bind(C, name="fortran_add")
+    double precision, intent(in) :: a,b
+    double precision, intent(out) :: C
 
-  subroutine div_fortran(a, b, result)
-    real :: a, b, result
-    if (b /= 0.0) then
-      result = a / b
+    c = a + b
+
+  end subroutine fortran_add
+
+  subroutine fortran_div(a,b,c) bind(C, name="fortran_div")
+    double precision, intent(in) :: a,b
+    double precision, intent(out) :: C
+
+    if(b < 0.00000001) then
+      c = a/0.000000001
     else
-      result = huge(0.0)  ! or some other sentinel value
+      c = a/b
     end if
-  end subroutine div_fortran
+  end subroutine fortran_div
 
-end module double_operations
+end module fortranmath_ops

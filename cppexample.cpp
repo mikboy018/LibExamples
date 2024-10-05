@@ -29,8 +29,9 @@ int main(int argc, char * argv[]){
     py::object J = py_math.attr("py_div")(a,b);
     double j = J.cast<double>();
 
-    double k = fortran_add(a,b);
-    double l = fortran_add(a,b);
+    double k = 0, l = 0;
+    fortran_add(&a,&b,&k);
+    fortran_div(&a,&b,&l);
 
     printf("[C++]\n");
     printf("Rust (Lib):\n");

@@ -45,10 +45,11 @@ int main(int argc, char * argv[]){
         exit(1);
     }
 
-    double k = fortran_add(a,b);
-    double l = fortran_add(a,b);
+    double k = 0, l = 0;
+    fortran_add(&a,&b,&k);
+    fortran_div(&a,&b,&l);
 
-    printf("[C++]\n");
+    printf("[C]\n");
     printf("Rust (Lib):\n");
     printf("A %f + B %f = C %f\n",a,b,c);
     printf("A %f / B %f = D %f\n",a,b,d);

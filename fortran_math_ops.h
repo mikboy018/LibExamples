@@ -5,8 +5,8 @@
 extern "C"{
 #endif
 
-extern double fortran_add(double a, double b);
-extern double fortran_div(double a, double b);
+extern double fortran_add(double * a, double * b, double * c);
+extern double fortran_div(double * a, double * b, double * c);
 
 #ifdef __cplusplus
 }
