@@ -44,18 +44,20 @@ int main(int argc, char * argv[]){
         exit(1);
     }
 
-    printf("RUST:\n");
+    printf("[C]\n");
+    printf("Rust (Lib):\n");
     printf("A %f + B %f = C %f\n",a,b,c);
     printf("A %f / B %f = D %f\n",a,b,d);
-    printf("C\n");
+    printf("C (Header):\n");
     printf("A %f + B %f = C %f\n",a,b,e);
     printf("A %f / B %f = D %f\n",a,b,f);
-    printf("CLIB\n");
+    printf("C (Lib):\n");
     printf("A %f + B %f = C %f\n",a,b,g);
     printf("A %f / B %f = D %f\n",a,b,h);
-    printf("Python\n");
+    printf("Python:\n");
     printf("A %f + B %f = C %f\n",a,b,i);
-    printf("A %f / B %f = D %f\n",a,b,j);    
+    printf("A %f / B %f = c %f\n",a,b,j);
+    printf("-------------------------------------\n");
 
     return 0;
 }
