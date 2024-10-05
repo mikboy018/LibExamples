@@ -3,6 +3,7 @@
 #include "rust_math_ops.h"
 #include "c_math_ops.h"
 #include "clib_math_ops.h"
+#include "fortran_math_ops.h"
 
 int main(int argc, char * argv[]){
 
@@ -44,7 +45,10 @@ int main(int argc, char * argv[]){
         exit(1);
     }
 
-    printf("[C]\n");
+    double k = fortran_add(a,b);
+    double l = fortran_add(a,b);
+
+    printf("[C++]\n");
     printf("Rust (Lib):\n");
     printf("A %f + B %f = C %f\n",a,b,c);
     printf("A %f / B %f = D %f\n",a,b,d);
@@ -57,6 +61,9 @@ int main(int argc, char * argv[]){
     printf("Python:\n");
     printf("A %f + B %f = C %f\n",a,b,i);
     printf("A %f / B %f = c %f\n",a,b,j);
+    printf("Fortran:\n");
+    printf("A %f + B %f = C %f\n",a,b,k);
+    printf("A %f / B %f = c %f\n",a,b,l);
     printf("-------------------------------------\n");
 
     return 0;
