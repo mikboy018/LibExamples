@@ -5,6 +5,16 @@
 #include "clib_math_ops.h"
 #include "fortran_math_ops.h"
 
+#define NRM  "\x1B[0m"
+#define RED  "\033[0;31m"
+#define GRN  "\x1B[32m"
+#define YEL  "\x1B[33m"
+#define BLU  "\x1B[34m"
+#define MAG  "\x1B[35m"
+#define CYN  "\x1B[36m"
+#define ORG  "\x1B[38;2;255;165;0m"
+#define WHT  "\x1B[37m"
+
 namespace py = pybind11;
 using namespace py::literals;
 
@@ -33,22 +43,22 @@ int main(int argc, char * argv[]){
     fortran_add(&a,&b,&k);
     fortran_div(&a,&b,&l);
 
-    printf("[C++]\n");
-    printf("Rust (Lib):\n");
-    printf("A %f + B %f = C %f\n",a,b,c);
+    printf(GRN "[C++]\n");
+    printf(MAG "Rust (Lib):\n");
+    printf(NRM "A %f + B %f = C %f\n",a,b,c);
     printf("A %f / B %f = D %f\n",a,b,d);
-    printf("C (Header):\n");
-    printf("A %f + B %f = C %f\n",a,b,e);
+    printf(CYN "C (Header):\n");
+    printf(NRM "A %f + B %f = C %f\n",a,b,e);
     printf("A %f / B %f = D %f\n",a,b,f);
-    printf("C (Lib):\n");
-    printf("A %f + B %f = C %f\n",a,b,g);
+    printf(YEL "C (Lib):\n");
+    printf(NRM "A %f + B %f = C %f\n",a,b,g);
     printf("A %f / B %f = D %f\n",a,b,h);
-    printf("Python:\n");
-    printf("A %f + B %f = C %f\n",a,b,i);
-    printf("A %f / B %f = c %f\n",a,b,j);
-    printf("Fortran:\n");
-    printf("A %f + B %f = C %f\n",a,b,k);
-    printf("A %f / B %f = c %f\n",a,b,l);
+    printf(RED "Python:\n");
+    printf(NRM "A %f + B %f = C %f\n",a,b,i);
+    printf("A %f / B %f = D %f\n",a,b,j);
+    printf(ORG "Fortran:\n");
+    printf(NRM "A %f + B %f = C %f\n",a,b,k);
+    printf("A %f / B %f = D %f\n",a,b,l);
     printf("-------------------------------------\n");
 
     return 0;
