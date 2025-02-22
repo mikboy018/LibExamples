@@ -21,7 +21,7 @@ sudo apt-get install -y nvhpc-24-1
 ```
 make clean; make all
 ```
-
+NOTE: Default python version is 3.10, might need to set PY_VERS=3.XX for a different version prior to calling `make -j`
 ## Run
 C++ Executable
 ```
