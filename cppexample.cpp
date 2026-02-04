@@ -20,29 +20,41 @@ using namespace py::literals;
 
 int main(int argc, char * argv[]){
 
+    // Will use these values for all languages a+b or a/b
     double a = 2.2;
     double b = 3.3;
 
+    // Call Rust Functions
     double c = rust_add(a,b);
     double d = rust_div(a,b);
 
+    // Call C Functions
     double e = c_add(a,b);
     double f = c_div(a,b);
 
+    // Call C++ Functions
     double g = clib_add(a,b);
     double h = clib_div(a,b);
 
+    // Load up the python module
     py::scoped_interpreter guard{};
+    // Load module functions
+    // From file://./py_math_ops.py Line 1
     py::module_ py_math = py::module_::import("py_math_ops");
     py::object I = py_math.attr("py_add")(a,b);
+    // Cast Result
     double i = I.cast<double>();
+    // From file://./py_math_ops.py Line 14
     py::object J = py_math.attr("py_div")(a,b);
+    // Cast Result
     double j = J.cast<double>();
 
+    // Call Fortran Functions
     double k = 0, l = 0;
     fortran_add(&a,&b,&k);
     fortran_div(&a,&b,&l);
 
+    // Display Results
     printf(GRN "[C++]\n");
     printf(MAG "Rust (Lib):\n");
     printf(NRM "A %f + B %f = C %f\n",a,b,c);

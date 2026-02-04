@@ -17,18 +17,23 @@
 
 int main(int argc, char * argv[]){
 
+    // Will use these values for all languages a+b or a/b
     double a = 2.2;
     double b = 3.3;
 
+    // Call Rust Functions
     double c = rust_add(a,b);
     double d = rust_div(a,b);
 
+    // Call C Functions
     double e = c_add(a,b);
     double f = c_div(a,b);
 
+    // Call C++ Functions
     double g = clib_add(a,b);
     double h = clib_div(a,b);
 
+    // Load up the python module
     double i=0, j=0;
     PyObject * name, * module, *py_add_func, * py_div_func;
     PyObject * args, * I, * J;
@@ -40,14 +45,20 @@ int main(int argc, char * argv[]){
     name = PyUnicode_DecodeFSDefault("py_math_ops");
     module = PyImport_Import(name);
     Py_DECREF(name);
+    // Load module functions
     if(module != NULL){
+        // From file://./py_math_ops.py Line 1
         py_add_func = PyObject_GetAttrString(module,"py_add");
+        // From file://./py_math_ops.py Line 14
         py_div_func = PyObject_GetAttrString(module,"py_div");
         args = PyTuple_New(2);
+        //  Set our arguments, a & b for both functions
         PyTuple_SetItem(args,0,PyFloat_FromDouble(a));
         PyTuple_SetItem(args,1,PyFloat_FromDouble(b));
+        // Call
         I = PyObject_CallObject(py_add_func,args);
         J = PyObject_CallObject(py_div_func,args);
+        // Cast
         i = PyFloat_AsDouble(I);
         j = PyFloat_AsDouble(J);
     } else {
@@ -55,10 +66,12 @@ int main(int argc, char * argv[]){
         exit(1);
     }
 
+    // Call Fortran Functions
     double k = 0, l = 0;
     fortran_add(&a,&b,&k);
     fortran_div(&a,&b,&l);
 
+    // Display Results
     printf(GRN "[C++]\n");
     printf(MAG "Rust (Lib):\n");
     printf(NRM "A %f + B %f = C %f\n",a,b,c);
