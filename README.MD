@@ -1,5 +1,5 @@
 # CPP Library Examples
-Importing functions from Rust, Headerfiles, C Shared Libs, and Python -- more to come
+Examples showing importing of functions from Rust, Headerfiles, C, Fortran, and Python
 
 ## Requirements
 - [Rust](https://www.rust-lang.org/tools/install)
@@ -25,9 +25,10 @@ NOTE: Default python version is 3.10, might need to set PY_VERS=3.XX for a diffe
 ## Run
 C++ Executable
 ```
-./cppexample
+LD_LIBRARY_PATH=. ./cppexample
 ```
 C Executable
 ```
-./cexample
+LD_LIBRARY_PATH=. ./cexample
 ```
+Optionally, you can just `make clean; make test`
